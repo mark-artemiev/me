@@ -1,32 +1,49 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+        fixed
+        app
+        flat
+        color="insta"
+    >
+      <div class="toolbar-container">
+        <v-toolbar-title v-text="'Портфолио'"/>
+        <v-spacer/>
+        <v-btn
+            icon
+            @click.stop="rightDrawer = !rightDrawer"
+        >
+          <v-icon>send</v-icon>
+        </v-btn>
+      </div>
+    </v-app-bar>
+    <v-container>
+      <v-main>
+        <Profile />
+        <v-divider class="my-4"> </v-divider>
+        <div class="d-flex align-center justify-center mb-4">
+          <v-icon>
+            grid_on
+          </v-icon>
+          <span>Проекты:</span>
+        </div>
+        <Grid />
+      </v-main>
+    </v-container>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
+import Profile from './components/Profile'
+import Grid from './components/Grid'
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  name: 'App',
+  data: () => ({
+  }),
+  components: {
+    Profile, Grid
   }
-}
-</style>
+};
+</script>
